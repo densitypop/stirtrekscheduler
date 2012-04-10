@@ -1,0 +1,42 @@
+.pictos:before {
+  font-family: 'Pictos Custom';
+  font-size: 3em;
+  white-space: pre;
+  font-weight: normal;
+}
+
+.nav-item strong {
+  font-size: .8em;
+}
+
+.nav-item-web:before {
+  content: 'w\A';
+}
+
+.nav-item-mobile:before {
+  content: 'm\A';
+}
+
+.nav-item-javascript:before {
+  content: 'j\A';
+}
+
+.nav-item-cloud:before {
+  content: 'c\A';
+}
+
+.nav-item-quality:before {
+  content: 'q\A';
+}
+
+.nav-item-windows:before {
+  content: '8\A';
+}
+
+.nav-item-ux:before {
+  content: 'u\A';
+}
+
+.nav-item-misc:before {
+  content: '*\A';
+}
