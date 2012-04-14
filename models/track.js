@@ -10,5 +10,7 @@
 
   if(module && module.exports){
     module.exports = Track
+  } else {
+    App.Track = Track
   }
 })()

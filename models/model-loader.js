@@ -4,8 +4,8 @@
   ModelLoader.allTracks = function(callback){
     var loadTracks = function(data){
       var result = []
-      jQuery.each(data, function(idx){
-        result.push(App.Track(data[idx].id, data[idx].name))
+      jQuery.each(data.Tracks, function(idx){
+        result.push(App.Track(data.Tracks[idx].Id, data.Tracks[idx].Name))
       })
       callback(result)
     }
@@ -14,5 +14,7 @@
 
   if(module && module.exports){
     module.exports = ModelLoader
+  } else {
+    App.ModelLoader = ModelLoader
   }
 })()
