@@ -11,10 +11,9 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
 
   <link href="/css/main.css" type="text/css" rel="stylesheet">
-  <link href="/css/jquery-mobile.css" type="text/css" rel="stylesheet">
 
   <link href="//get.pictos.cc/fonts/1369/1" rel="stylesheet" type="text/css">
   <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
@@ -22,14 +21,17 @@
   <script language="javascript" src="/vendor/jquery.mobile.js"></script>
 
 </head>
-<body data-role="page" data-theme="d" data-content-theme="d">
-<header data-role="header">
+<body class="page-wrapper">
+<header>
   <h1>StirTrek Scheduler</h1>
 </header>
-<section data-role="content">
-  <ul data-role="listview" data-inset="true">
-    <li><a href="/tracks.html">Tracks</a></li>
+<section id="main-content">
+<nav>
+  <ul>
+    <li><a data-template-id="tracks-template" class="nav-button" href="/tracks">Tracks</a></li>
+    <li><a data-template-id="schedule-template" class="nav-button" href="/schedule">Schedule</a></li>
   </ul>
+</nav>
 </section>
 </body>
 </html>
