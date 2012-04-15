@@ -1,4 +1,5 @@
 require("./test-helper")
+require("../lib/tracks-container")
 Routes = require("../lib/routes")
 
 module.exports = {
@@ -23,13 +24,11 @@ module.exports = {
         }
       }
     },
-    "/tracks - loads tracks and renders list": function(done){
+    "/tracks - loads tracks and renders list": function(){
       var template = "<ul>{{#each this}}<li>{{ name }}</li>{{/each}}</ul>",
           ModelLoader = {allTracks: function(){}}
-      sinon.stub(ModelLoader, "allTracks", function(callback){
-        var tracks = [{name: "Track 1"}, {name: "Track 2"}]
-        callback(tracks)
-        done()
+      sinon.stub(ModelLoader, "allTracks", function(){
+        return [{name: "Track 1"}, {name: "Track 2"}]
       });
       Routes.router.routeTo("/tracks", this.$container, {tracksList: template}, ModelLoader)
       this.$container.html().should.eql("<ul><li>Track 1</li><li>Track 2</li></ul>")
