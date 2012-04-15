@@ -6,10 +6,6 @@
     timeSlot.startTime = startTime
     timeSlot.endTime = endTime
 
-    timeSlot.startAndEndTime = function(){
-      return timeSlot.startTime + " &ndash; " + timeSlot.endTime
-    }
-
     return timeSlot
   }
 
