@@ -13,10 +13,10 @@ module.exports = {
       sinon.assert.calledOnce(spy)
     },
     "loads all tracks": function(done){
-      var track = { id: sinon.stub(), name: undefined }
-      sinon.stub($, "ajax").yieldsTo("success", [track])
+      var track = { Id: 1, Name: "blah" }
+      sinon.stub($, "ajax").yieldsTo("success", { Tracks: [track] })
       App.ModelLoader.allTracks(function(result){
-        result.should.includeEql(track)
+        result.should.includeEql({ id: 1, name: "blah" })
         done()
       })
     }
