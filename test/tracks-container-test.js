@@ -16,7 +16,7 @@ module.exports = {
         return [{name: "track1"}, {name: "track2"}]
       })
       $("#test-container").tracksContainer(
-          { templateId: "tracks-template", modelLoader: ModelLoader })
+          { template: $("#tracks-template").html(), modelLoader: ModelLoader })
       $("#test-container").html().should.match(/track1/)
       $("#test-container").html().should.match(/track2/)
     }
