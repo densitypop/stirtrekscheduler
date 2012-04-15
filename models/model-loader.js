@@ -12,6 +12,14 @@
       return App.Track(track.Id, track.Name)
     });
   }
+  ModelLoader.sessionsByTrackId = function(trackId){
+    var rawSessions = _(ModelLoader.cachedData._wrapped.Sessions).select(function(session){
+      return session.TrackId == trackId
+    })
+    return rawSessions.map(function(session){
+      return App.Session(session.Id, session.Name, session.Abstract, session.SpeakerIds, session.TimeSlotId, session.TrackId)
+    })
+  }
 
   if(module && module.exports){
     module.exports = ModelLoader
