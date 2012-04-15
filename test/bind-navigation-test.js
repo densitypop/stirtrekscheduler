@@ -19,7 +19,11 @@ module.exports = {
     "binds to specific URLs with callbacks": function(){
       var linkSpy = sinon.spy(),
           href = "/blah",
-          routes = {}
+          routes = {router: {
+            routeTo: function(url){
+              routes[url].call({})
+            }
+          }}
       this.$link.attr("href", href)
       routes[href] = linkSpy
       this.$container.bindNavigation({ buttonSelector: "a", routes: routes })
