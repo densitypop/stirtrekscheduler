@@ -1,6 +1,7 @@
 (function(){
-  var Session = function(id, name, abstract, speakerIds, timeSlotId, trackId, tags){
-    var session = {}
+  var Session = function(id, name, abstract, speakerIds, timeSlotId, trackId, tags, modelLoader){
+    var session = {},
+        modelLoader = modelLoader || App.ModelLoader
 
     session.id = id
     session.name = name
@@ -9,6 +10,10 @@
     session.timeSlotId = timeSlotId
     session.trackId = trackId
     session.tags = tags
+
+    session.timeSlot = function(){
+      return modelLoader.timeSlotById(session.timeSlotId)
+    }
 
     return session
   }

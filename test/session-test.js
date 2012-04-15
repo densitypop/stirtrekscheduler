@@ -13,6 +13,14 @@ module.exports = {
       session.trackId.should.eql(2)
       session.tags.should.eql(["tag"])
 
+    },
+    "loads time slot by id": function(){
+      var timeSlot = { id: 1, startTime: "10:00 AM", endTime: "11:00 AM" }
+      ModelLoader.timeSlotById = function(){
+        return timeSlot;
+      }
+      var session = Session(1, "Test", "", [], 1, 1, [], ModelLoader)
+      session.timeSlot().should.eql(timeSlot)
     }
   }
 }
