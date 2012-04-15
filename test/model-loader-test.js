@@ -13,7 +13,7 @@ module.exports = {
     "loads tracks from cached data": function(){
       var tracks = [{Id: 1, Name:"Track 1"},{Id: 2, Name: "Track 2"}],
           actual = [{id: 1, name:"Track 1"},{id: 2, name: "Track 2"}]
-      ModelLoader.cachedData = { Tracks: tracks }
+      ModelLoader.cachedData = { _wrapped: { Tracks: tracks } }
       ModelLoader.allTracks().should.eql(actual)
     }
   }

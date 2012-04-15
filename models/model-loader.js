@@ -8,7 +8,7 @@
     jQuery.getJSON("http://stirtrek.com/Feed/JSON", loadData)
   }
   ModelLoader.allTracks = function(callback){
-    return ModelLoader.cachedData.Tracks.map(function(track){
+    return ModelLoader.cachedData._wrapped.Tracks.map(function(track){
       return App.Track(track.Id, track.Name)
     });
   }
