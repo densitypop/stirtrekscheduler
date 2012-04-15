@@ -1,24 +1,20 @@
 require("./test-helper")
 App.Track = function(a) { return a }
-App.ModelLoader = require("../models/model-loader")
+ModelLoader = require("../models/model-loader")
 
 module.exports = {
   "ModelLoader": {
-    afterEach: function(){
+    "loads data via ajax": function(){
+      var spy = sinon.spy($, "ajax")
+      ModelLoader.init()
+      spy.calledOnce.should.be.true
       $.ajax.restore()
     },
-    "loads tracks via ajax": function(){
-      var spy = sinon.spy($, "ajax")
-      App.ModelLoader.allTracks()
-      sinon.assert.calledOnce(spy)
-    },
-    "loads all tracks": function(done){
-      var track = { Id: 1, Name: "blah" }
-      sinon.stub($, "ajax").yieldsTo("success", { Tracks: [track] })
-      App.ModelLoader.allTracks(function(result){
-        result.should.includeEql({ id: 1, name: "blah" })
-        done()
-      })
+    "loads tracks from cached data": function(){
+      var tracks = [{Id: 1, Name:"Track 1"},{Id: 2, Name: "Track 2"}],
+          actual = [{id: 1, name:"Track 1"},{id: 2, name: "Track 2"}]
+      ModelLoader.cachedData = { Tracks: tracks }
+      ModelLoader.allTracks().should.eql(actual)
     }
   }
 }

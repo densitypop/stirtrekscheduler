@@ -1,15 +1,16 @@
 (function(){
 
   var ModelLoader = {}
-  ModelLoader.allTracks = function(callback){
-    var loadTracks = function(data){
-      var result = []
-      jQuery.each(data.Tracks, function(idx){
-        result.push(App.Track(data.Tracks[idx].Id, data.Tracks[idx].Name))
-      })
-      callback(result)
+  ModelLoader.init = function(){
+    var loadData = function(data){
+      ModelLoader.cachedData = _(data)
     }
-    jQuery.getJSON("http://stirtrek.com/Feed/JSON", loadTracks)
+    jQuery.getJSON("http://stirtrek.com/Feed/JSON", loadData)
+  }
+  ModelLoader.allTracks = function(callback){
+    return ModelLoader.cachedData.Tracks.map(function(track){
+      return App.Track(track.Id, track.Name)
+    });
   }
 
   if(module && module.exports){

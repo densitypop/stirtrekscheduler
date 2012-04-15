@@ -1,5 +1,6 @@
 require("./test-helper")
 require("../lib/tracks-container")
+ModelLoader = require("../models/model-loader")
 
 module.exports = {
   "TracksContainer": {
@@ -11,11 +12,11 @@ module.exports = {
       container.appendTo("body")
     },
     "renders given template with each track": function(){
-      sinon.stub(App.ModelLoader, "allTracks", function(){
+      sinon.stub(ModelLoader, "allTracks", function(){
         return [{name: "track1"}, {name: "track2"}]
       })
       $("#test-container").tracksContainer(
-          { templateId: "tracks-template" })
+          { templateId: "tracks-template", modelLoader: ModelLoader })
       $("#test-container").html().should.match(/track1/)
       $("#test-container").html().should.match(/track2/)
     }
