@@ -18,6 +18,16 @@
   <link href="//get.pictos.cc/fonts/1369/1" rel="stylesheet" type="text/css">
   <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 
+  <script type="text/handlebars" id="sessions-list-template">
+    <ol>
+      {{#each this}}
+      <li>
+        {{ name }}
+      </li>
+      {{/each}}
+    </ol>
+  </script>
+
   <script type="text/handlebars" id="tracks-template">
     <ul>
       {{#each this}}
@@ -43,13 +53,16 @@
 </nav>
 </section>
 <script language="javascript" src="/vendor/handlebars.js"></script>
+<script language="javascript" src="/vendor/underscore.js"></script>
 <script language="javascript" src="/vendor/jquery.js"></script>
 <script language="javascript" src="/lib/app.js"></script>
 <script language="javascript" src="/lib/bind-navigation.js"></script>
 <script language="javascript" src="/lib/tracks-container.js"></script>
+<script language="javascript" src="/lib/sessions-container.js"></script>
 <script language="javascript" src="/lib/routes.js"></script>
 <script language="javascript" src="/models/model-loader.js"></script>
 <script language="javascript" src="/models/track.js"></script>
+<script language="javascript" src="/models/session.js"></script>
 <script language="javascript">
   $(App.init);
 </script>
