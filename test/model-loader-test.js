@@ -2,6 +2,7 @@ require("./test-helper")
 App.Track = function(a) { return a }
 App.Session = function(a,b,c) { return {id:a,name:b} }
 App.TimeSlot = function(a,b,c) { return {id:a,startTime:b,endTime:c} }
+App.Speaker = function(a,b,c) { return {id:a,name:b} }
 ModelLoader = require("../models/model-loader")
 
 module.exports = {
@@ -29,6 +30,14 @@ module.exports = {
           expected = { id: "1", startTime: "10:00 AM", endTime: "11:00 AM" }
       ModelLoader.cachedData = { TimeSlots: _([timeSlot]) }
       ModelLoader.timeSlotById("1").should.eql(expected)
+    },
+    "loads speakers matching multiple ids": function(){
+      var speakers = [{ Id: "1", Name: "Joe Bob" },
+                      { Id: "2", Name: "Jim Bim" },
+                      { Id: "3", Name: "Sam Slam" }],
+          expected = [{id:"1",name:"Joe Bob"},{id:"3",name:"Sam Slam"}]
+      ModelLoader.cachedData = { Speakers: _(speakers) }
+      ModelLoader.allSpeakersById(["1","3"]).should.eql(expected)
     }
   }
 }

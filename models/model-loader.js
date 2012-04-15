@@ -32,6 +32,14 @@
     })[0]
     return App.TimeSlot(raw.Id, raw.StartTime, raw.EndTime)
   }
+  ModelLoader.allSpeakersById = function(ids){
+    var raw = ModelLoader.cachedData.Speakers.select(function(speaker){
+      return _(ids).include(speaker.Id)
+    })
+    return raw.map(function(speaker){
+      return App.Speaker(speaker.Id, speaker.Name, speaker.Bio)
+    })
+  }
 
   if(module && module.exports){
     module.exports = ModelLoader

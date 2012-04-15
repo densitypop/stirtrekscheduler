@@ -21,6 +21,15 @@ module.exports = {
       }
       var session = Session(1, "Test", "", [], 1, 1, [], ModelLoader)
       session.timeSlot().should.eql(timeSlot)
+    },
+    "loads speakers": function(){
+      var speakers = [{id: 1, name:"Joe Bob"}]
+      ModelLoader.allSpeakersById = function(ids){
+        return speakers
+      }
+      var session = Session(1, "Test", "", ["1"], 1, 1, [], ModelLoader)
+      session.speakers().should.eql(speakers)
+
     }
   }
 }

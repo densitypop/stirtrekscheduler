@@ -14,6 +14,9 @@
     session.timeSlot = function(){
       return modelLoader.timeSlotById(session.timeSlotId)
     }
+    session.speakers = function(){
+      return modelLoader.allSpeakersById(session.speakerIds)
+    }
 
     return session
   }
