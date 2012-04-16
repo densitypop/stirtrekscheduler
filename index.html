@@ -91,18 +91,21 @@
     <p>{{> allSpeakerPhotos }}</p>
     <p>{{ abstract }}</p>
   </script>
+
+  <script type="text/handlebars" id="home-template">
+    <nav>
+      <ul>
+        <li><a data-template-id="tracks-template" class="nav-button" href="/tracks">Tracks</a></li>
+        <li><a data-template-id="schedule-template" class="nav-button" href="/schedule">Schedule</a></li>
+      </ul>
+    </nav>
+  </script>
 </head>
 <body class="page-wrapper">
 <header>
   <h1>StirTrek Scheduler</h1>
 </header>
 <section id="main-content">
-<nav>
-  <ul>
-    <li><a data-template-id="tracks-template" class="nav-button" href="/tracks">Tracks</a></li>
-    <li><a data-template-id="schedule-template" class="nav-button" href="/schedule">Schedule</a></li>
-  </ul>
-</nav>
 </section>
 <script language="javascript" src="/vendor/handlebars.js"></script>
 <script language="javascript" src="/vendor/underscore.js"></script>
