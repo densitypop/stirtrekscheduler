@@ -56,6 +56,12 @@
       return App.Session(session.Id, session.Name, session.Abstract, session.SpeakerIds, session.TimeSlotId, session.TrackId)
     })
   }
+  ModelLoader.sessionById = function(id){
+    var session = ModelLoader.cachedData.Sessions.select(function(session){
+      return session.Id == id
+    })[0]
+    return App.Session(session.Id, session.Name, session.Abstract, session.SpeakerIds, session.TimeSlotId, session.TrackId)
+  }
 
   if(module && module.exports){
     module.exports = ModelLoader
