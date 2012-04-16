@@ -18,10 +18,19 @@
   <link href="//get.pictos.cc/fonts/1369/1" rel="stylesheet" type="text/css">
   <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 
-  <script type="text/handlebars" id="sessions-list-template">
+  <script type="text/handlebars" id="schedule-navigation-template">
+    <nav class="back-button">
+      &laquo; <a href="/schedule" class="nav-button">Schedule</a>
+    </nav>
+  </script>
+
+  <script type="text/handlebars" id="tracks-navigation-template">
     <nav class="back-button">
       &laquo; <a href="/tracks" class="nav-button">Tracks</a>
     </nav>
+  </script>
+
+  <script type="text/handlebars" id="sessions-list-template">
     <ol class="sessions-list group">
       {{#each this}}
       <li class="sessions-list-item">

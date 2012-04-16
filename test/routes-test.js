@@ -48,7 +48,7 @@ module.exports = {
       sinon.stub(ModelLoader, "sessionsByTrackId", function(){
         return [{name: "Session 1"}, {name: "Session 2"}]
       });
-      Routes.router.routeTo("/tracks/12", this.$container, {sessionsList: template}, ModelLoader)
+      Routes.router.routeTo("/tracks/12", this.$container, {sessionsList: template, tracksNavigation: ""}, ModelLoader)
       this.$container.html().should.eql("<ul><li>Session 1</li><li>Session 2</li></ul>")
     },
     "/schedule/(\\d+) - displays sessions for the specified time slot": function(){
@@ -57,7 +57,7 @@ module.exports = {
       sinon.stub(ModelLoader, "sessionsByTimeSlotId", function(){
         return [{name: "Session 1"}, {name: "Session 2"}]
       })
-      Routes.router.routeTo("/schedule/12", this.$container, {sessionsList: template}, ModelLoader)
+      Routes.router.routeTo("/schedule/12", this.$container, {sessionsList: template, scheduleNavigation: ""}, ModelLoader)
       this.$container.html().should.eql("<ul><li>Session 1</li><li>Session 2</li></ul>")
     }
   }
