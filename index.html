@@ -34,10 +34,12 @@
     <ol class="sessions-list group">
       {{#each this}}
       <li class="sessions-list-item">
-        <p><img alt="{{ firstSpeakerName this }}" src="{{ firstSpeakerPhotoUrl this }}"></p>
-        <p class="session-time">{{ formattedTime this }}</p>
-        <p>{{ allSpeakersNames this }}</p>
-        <p>{{ name }}</p>
+        <a class="nav-button" href="/sessions/{{ id }}">
+          <p><img alt="{{ firstSpeakerName this }}" src="{{ firstSpeakerPhotoUrl this }}"></p>
+          <p class="session-time">{{ formattedTime this }}</p>
+          <p>{{ allSpeakersNames this }}</p>
+          <p>{{ name }}</p>
+        </a>
       </li>
       {{/each}}
     </ol>
@@ -55,6 +57,23 @@
     </ul>
   </script>
 
+  <script type="text/handlebars" id="all-speaker-photos-partial">
+    <ul>
+      {{#speakers}}
+      <li>{{> speakerPhoto}}</li>
+      {{/speakers}}
+    </ul>
+  </script>
+
+  <script type="text/handlebars" id="speaker-photo-partial">
+    <figure>
+      <img src="{{ photoUrl }}" alt="{{ name }}">
+      <figcaption>
+        <p>{{ name }}</p>
+      </figcaption>
+    </figure>
+  </script>
+
   <script type="text/handlebars" id="schedule-template">
     <ol class="schedule-list">
     {{#each this}}
@@ -63,6 +82,14 @@
     </li>
     {{/each}}
     </ol>
+  </script>
+
+  <script type="text/handlebars" id="session-template">
+    <h2>{{ name }}</h2>
+    <p><small>When:</small> {{ formattedTime this }}</p>
+    <p><small>Track:</small> {{ trackName this }}</p>
+    <p>{{> allSpeakerPhotos }}</p>
+    <p>{{ abstract }}</p>
   </script>
 </head>
 <body class="page-wrapper">

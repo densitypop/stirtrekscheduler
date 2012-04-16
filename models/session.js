@@ -17,6 +17,9 @@
     session.speakers = function(){
       return modelLoader.allSpeakersById(session.speakerIds)
     }
+    session.track = function(){
+      return modelLoader.trackById(session.trackId)
+    }
 
     return session
   }

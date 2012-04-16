@@ -1,5 +1,5 @@
 require("./test-helper")
-App.Track = function(a) { return a }
+App.Track = function(a,b) { return {id:a,name:b} }
 App.Session = function(a,b,c) { return {id:a,name:b} }
 App.Speaker = function(a,b,c) { return {id:a,name:b} }
 App.TimeSlot = require("../models/time-slot")
@@ -61,6 +61,12 @@ module.exports = {
           expected = {id:1, name:"Session 1"}
       ModelLoader.cachedData = { Sessions: _(sessions) }
       ModelLoader.sessionById("1").should.eql(expected)
+    },
+    "loads a track by id": function(){
+      var tracks = [{Id:"1", Name:"Track 1"},{Id:2, Name:"Track 2"}],
+          expected = {id:"1", name:"Track 1"}
+      ModelLoader.cachedData = { Tracks: _(tracks) }
+      ModelLoader.trackById("1").should.eql(expected)
     }
   }
 }

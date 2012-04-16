@@ -30,6 +30,14 @@ module.exports = {
       var session = Session(1, "Test", "", ["1"], 1, 1, [], ModelLoader)
       session.speakers().should.eql(speakers)
 
+    },
+    "loads track": function(){
+      var track = { id: 1, name: "Blah" }
+      ModelLoader.trackById = function(id){
+        return track
+      }
+      var session = Session(1, "Test", "", ["1"], "1", 1, [], ModelLoader)
+      session.track().should.eql(track)
     }
   }
 }
