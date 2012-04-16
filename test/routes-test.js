@@ -50,6 +50,15 @@ module.exports = {
       });
       Routes.router.routeTo("/tracks/12", this.$container, {sessionsList: template}, ModelLoader)
       this.$container.html().should.eql("<ul><li>Session 1</li><li>Session 2</li></ul>")
+    },
+    "/schedule/(\\d+) - displays sessions for the specified time slot": function(){
+      var template = "<ul>{{#each this}}<li>{{ name }}</li>{{/each}}</ul>",
+          ModelLoader = {sessionsByTimeSlotId: function(id){}}
+      sinon.stub(ModelLoader, "sessionsByTimeSlotId", function(){
+        return [{name: "Session 1"}, {name: "Session 2"}]
+      })
+      Routes.router.routeTo("/schedule/12", this.$container, {sessionsList: template}, ModelLoader)
+      this.$container.html().should.eql("<ul><li>Session 1</li><li>Session 2</li></ul>")
     }
   }
 }

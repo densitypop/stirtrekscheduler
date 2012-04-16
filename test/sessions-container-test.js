@@ -12,11 +12,9 @@ module.exports = {
       container.appendTo("body")
     },
     "renders given template with each session": function(){
-      sinon.stub(ModelLoader, "sessionsByTrackId", function(){
-        return [{name: "session1"}, {name: "session2"}]
-      })
+      var sessions = [{name: "session1"}, {name: "session2"}]
       $("#test-container").sessionsContainer(
-          { template: $("#sessions-template").html(), modelLoader: ModelLoader })
+          { template: $("#sessions-template").html(), data: sessions })
       $("#test-container").html().should.match(/session1/)
       $("#test-container").html().should.match(/session2/)
     }
