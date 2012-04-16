@@ -48,6 +48,14 @@
       return timeSlot.sortVal()
     })
   }
+  ModelLoader.sessionsByTimeSlotId = function(timeSlotId){
+    var rawSessions = ModelLoader.cachedData.Sessions.select(function(session){
+      return session.TimeSlotId == timeSlotId
+    })
+    return rawSessions.map(function(session){
+      return App.Session(session.Id, session.Name, session.Abstract, session.SpeakerIds, session.TimeSlotId, session.TrackId)
+    })
+  }
 
   if(module && module.exports){
     module.exports = ModelLoader

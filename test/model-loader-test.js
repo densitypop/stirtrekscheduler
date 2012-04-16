@@ -49,6 +49,12 @@ module.exports = {
       ModelLoader.cachedData = { TimeSlots: _(timeSlots) }
       ModelLoader.allTimeSlots().map(function(timeSlot){ return timeSlot.id }).
         should.eql(expected.map(function(timeSlot){ return timeSlot.id }))
+    },
+    "loads all sessions by time slot id": function(){
+      var sessions = [{Id:1, Name:"Session 1", TimeSlotId:"1"},{Id:2, Name:"Session 2", TimeSlotId:"2"}],
+          expected = [{id:1, name:"Session 1"}]
+      ModelLoader.cachedData = { Sessions: _(sessions) }
+      ModelLoader.sessionsByTimeSlotId("1").should.eql(expected)
     }
   }
 }
