@@ -40,6 +40,14 @@
       return App.Speaker(speaker.Id, speaker.Name, speaker.Bio)
     })
   }
+  ModelLoader.allTimeSlots = function(){
+    var timeSlots = ModelLoader.cachedData.TimeSlots.map(function(timeSlot){
+      return App.TimeSlot(timeSlot.Id, timeSlot.StartTime, timeSlot.EndTime)
+    })
+    return _(timeSlots).sortBy(function(timeSlot){
+      return timeSlot.sortVal()
+    })
+  }
 
   if(module && module.exports){
     module.exports = ModelLoader

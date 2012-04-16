@@ -42,6 +42,16 @@
       {{/each}}
     </ul>
   </script>
+
+  <script type="text/handlebars" id="schedule-template">
+    <ol class="schedule-list">
+    {{#each this}}
+    <li>
+      <a href="/schedule/{{ id }}">{{ startTime }} - {{ endTime }}</a>
+    </li>
+    {{/each}}
+    </ol>
+  </script>
 </head>
 <body class="page-wrapper">
 <header>
