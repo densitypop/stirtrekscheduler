@@ -44,3 +44,26 @@
 .schedule-list {
   text-align: left;
 }
+
+.sessions-list {
+  max-width: 75%;
+  margin: 0 auto;
+}
+
+.sessions-list .sessions-list-item {
+  float: left;
+  text-align: left;
+  width: 35%;
+  margin-bottom: .5em;
+  &:nth-child(odd){
+    padding-right: 15%;
+  }
+  p {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: .85em;
+  }
+  .session-time {
+    font-family: Helvetica;
+    font-size: .5em;
+  }
+}
