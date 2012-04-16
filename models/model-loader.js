@@ -1,7 +1,7 @@
 (function(){
 
   var ModelLoader = {}
-  ModelLoader.init = function(){
+  ModelLoader.init = function(callback){
     var loadData = function(data){
       ModelLoader.cachedData = {}
       _.tap(ModelLoader.cachedData, function(cached){
@@ -10,6 +10,7 @@
         cached.TimeSlots = _(data.TimeSlots)
         cached.Speakers = _(data.Speakers)
       })
+      callback()
     }
     jQuery.getJSON("http://stirtrek.com/Feed/JSON", loadData)
   }
