@@ -24,7 +24,7 @@
       return session.TrackId == trackId
     })
     return rawSessions.map(function(session){
-      return App.Session(session.Id, session.Name, session.Abstract, session.SpeakerIds, session.TimeSlotId, session.TrackId)
+      return App.Session(session.Id, session.Name, session.Abstract, session.SpeakerIds, session.TimeSlotId, session.TrackId, session.Tags)
     })
   }
   ModelLoader.timeSlotById = function(id){
@@ -54,14 +54,14 @@
       return session.TimeSlotId == timeSlotId
     })
     return rawSessions.map(function(session){
-      return App.Session(session.Id, session.Name, session.Abstract, session.SpeakerIds, session.TimeSlotId, session.TrackId)
+      return App.Session(session.Id, session.Name, session.Abstract, session.SpeakerIds, session.TimeSlotId, session.TrackId, session.Tags)
     })
   }
   ModelLoader.sessionById = function(id){
     var session = ModelLoader.cachedData.Sessions.select(function(session){
       return session.Id == id
     })[0]
-    return App.Session(session.Id, session.Name, session.Abstract, session.SpeakerIds, session.TimeSlotId, session.TrackId)
+    return App.Session(session.Id, session.Name, session.Abstract, session.SpeakerIds, session.TimeSlotId, session.TrackId, session.Tags)
   }
   ModelLoader.trackById = function(id){
     var track = ModelLoader.cachedData.Tracks.select(function(track){
@@ -78,7 +78,20 @@
         })
     if(sessions.length == 0) return []
     return sessions.map(function(session){
-      return App.Session(session.Id, session.Name, session.Abstract, session.SpeakerIds, session.TimeSlotId, session.TrackId)
+      return App.Session(session.Id, session.Name, session.Abstract, session.SpeakerIds, session.TimeSlotId, session.TrackId, session.Tags)
+    })
+  },
+  ModelLoader.favoriteBySessionId = function(id){
+    return _.select(ModelLoader.favoriteSessions(), function(session){
+      return session.id == id
+    })[0]
+  }
+  ModelLoader.sessionsByTagNames = function(tagNames){
+    var rawSessions = ModelLoader.cachedData.Sessions.select(function(session){
+      return _.intersection(session.Tags, tagNames).length > 0
+    })
+    return rawSessions.map(function(session){
+      return App.Session(session.Id, session.Name, session.Abstract, session.SpeakerIds, session.TimeSlotId, session.TrackId, session.Tags)
     })
   }
 

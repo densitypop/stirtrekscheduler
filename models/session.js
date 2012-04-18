@@ -11,6 +11,10 @@
     session.trackId = trackId
     session.tags = tags
 
+    session.isFavorite = function(){
+      var favorite = modelLoader.favoriteBySessionId(session.id)
+      return (favorite !== undefined && favorite !== null)
+    }
     session.timeSlot = function(){
       return modelLoader.timeSlotById(session.timeSlotId)
     }
@@ -19,6 +23,9 @@
     }
     session.track = function(){
       return modelLoader.trackById(session.trackId)
+    }
+    session.similarSessions = function(){
+      return modelLoader.sessionsByTagNames(session.tags)
     }
 
     return session

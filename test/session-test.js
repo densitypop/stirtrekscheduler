@@ -38,6 +38,21 @@ module.exports = {
       }
       var session = Session(1, "Test", "", ["1"], "1", 1, [], ModelLoader)
       session.track().should.eql(track)
+    },
+    "knows if it is a favorite": function(){
+      ModelLoader.favoriteBySessionId = function(id){
+        return {id:1,name:"Session 1"}
+      }
+      var session = Session(1, "Session 1", "", [], "", 1, [], ModelLoader)
+      session.isFavorite().should.be.true
+    },
+    "loads similar sessions": function(){
+      var expected = [{id:2,name:"Session 2"}, {id:3,name:"Session 3"}]
+      ModelLoader.sessionsByTagNames = function(tagNames){
+        return expected
+      }
+      var session = Session(1, "Session 1", "", [], "", 1, [], ModelLoader)
+      session.similarSessions().should.eql(expected)
     }
   }
 }

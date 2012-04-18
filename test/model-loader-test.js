@@ -77,6 +77,21 @@ module.exports = {
       ModelLoader.cachedData = { Sessions: _(sessions) }
       ModelLoader.favoriteSessions().should.eql(expected)
       localStorage.getItem.restore()
+    },
+    "loads favorite session by session id": function(){
+      var sessions = [{Id:1, Name:"Session 1"},{Id:"2", Name:"Session 2"}],
+          expected = {id:1, name:"Session 1"}
+      sinon.stub(ModelLoader, "favoriteSessions", function(){
+        return [expected]
+      })
+      ModelLoader.cachedData = { Sessions: _(sessions) }
+      ModelLoader.favoriteBySessionId(1).should.eql(expected)
+    },
+    "loads sessions by tags": function(){
+      var sessions = [{Id:1, Name:"Session 1", Tags:["tag1", "tag2"]},{Id:"2", Name:"Session 2", Tags:["tag2"]}],
+          expected = [{id:1, name:"Session 1"}]
+      ModelLoader.cachedData = { Sessions: _(sessions) }
+      ModelLoader.sessionsByTagNames(["tag1"]).should.eql(expected)
     }
   }
 }

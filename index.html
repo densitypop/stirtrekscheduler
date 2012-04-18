@@ -106,6 +106,18 @@
     <p><small>Track:</small> {{ trackName this }}</p>
     <p>{{> allSpeakerPhotos }}</p>
     <p>{{ abstract }}</p>
+    {{#whenFavorite this}}
+      Since you liked this session, you may also enjoy:
+      <ul class="similar-sessions">
+      {{#similarSessions this}}
+        <a class="nav-button" href="/sessions/{{ id }}">
+          <p><img alt="{{ firstSpeakerName this }}" src="{{ firstSpeakerPhotoUrl this }}"></p>
+          <p class="session-time">{{ formattedTime this }}</p>
+          <p>{{ allSpeakersNames this }}</p>
+          <p>{{ name }}</p>
+        </a>
+      {{/similarSessions}}
+    {{/whenFavorite}}
   </script>
 
   <script type="text/handlebars" id="favorites-list-template">
