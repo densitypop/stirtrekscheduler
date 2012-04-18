@@ -108,11 +108,16 @@
     <p>{{ abstract }}</p>
   </script>
 
+  <script type="text/handlebars" id="favorites-list-template">
+    {{{ renderSessionsList this }}}
+  </script>
+
   <script type="text/handlebars" id="home-template">
     <nav class="nav-primary">
       <ul>
         <li><a data-template-id="tracks-template" class="nav-button" href="/tracks">Tracks</a></li>
         <li><a data-template-id="schedule-template" class="nav-button" href="/schedule">Schedule</a></li>
+        <li><a data-template-id="schedule-template" class="nav-button" href="/favorites">Favorites</a></li>
       </ul>
     </nav>
   </script>

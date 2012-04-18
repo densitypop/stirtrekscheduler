@@ -67,6 +67,16 @@ module.exports = {
           expected = {id:"1", name:"Track 1"}
       ModelLoader.cachedData = { Tracks: _(tracks) }
       ModelLoader.trackById("1").should.eql(expected)
+    },
+    "loads favorite sessions": function(){
+      var sessions = [{Id:1, Name:"Session 1"},{Id:"2", Name:"Session 2"}],
+          expected = [{id:1, name:"Session 1"}]
+      sinon.stub(localStorage, "getItem", function(){
+        return '["1"]'
+      })
+      ModelLoader.cachedData = { Sessions: _(sessions) }
+      ModelLoader.favoriteSessions().should.eql(expected)
+      localStorage.getItem.restore()
     }
   }
 }

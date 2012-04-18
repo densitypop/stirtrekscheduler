@@ -69,6 +69,18 @@
     })[0]
     return App.Track(track.Id, track.Name)
   }
+  ModelLoader.favoriteSessions = function(){
+    var favorites = JSON.parse(localStorage.getItem("stirtrek-favorites")),
+        sessions = ModelLoader.cachedData.Sessions.select(function(session){
+          if(_.include(favorites, JSON.stringify(session.Id))){
+            return session
+          }
+        })
+    if(sessions.length == 0) return []
+    return sessions.map(function(session){
+      return App.Session(session.Id, session.Name, session.Abstract, session.SpeakerIds, session.TimeSlotId, session.TrackId)
+    })
+  }
 
   if(module && module.exports){
     module.exports = ModelLoader
