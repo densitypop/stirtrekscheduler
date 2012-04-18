@@ -1,8 +1,36 @@
-.pictos:before {
+.pictos:before, button.pictos {
   font-family: 'Pictos Custom';
   font-size: 3em;
   white-space: pre;
   font-weight: normal;
+}
+
+button.favorite-button {
+  -webkit-appearance: none;
+  background-color: inherit;
+  border: none;
+}
+
+.favorite-button {
+  -webkit-text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  color: rgb(238,238,238); /* Old browsers */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,255,244,1)), color-stop(40%,rgba(223,229,215,1)), color-stop(100%,rgba(179,190,173,1))); /* Chrome,Safari4+ */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px #999;
+  &:active {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(179,190,173,1)), color-stop(60%,rgba(223,229,215,1)), color-stop(100%,rgba(252,255,244,1))); /* Chrome,Safari4+ */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px #999;
+  }
+}
+
+.favorite-button.saved-favorite {
+  background: yellow;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px #999;
 }
 
 .nav-button.back {

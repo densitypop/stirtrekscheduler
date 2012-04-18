@@ -17,7 +17,8 @@
     "jsdom": "*",
     "zepto-node": "*",
     "sinon": "*",
-    "sinon-mocha": "*"
+    "sinon-mocha": "*",
+    "localStorage": "*"
   },
   "optionalDependencies": {}
 }

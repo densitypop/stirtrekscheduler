@@ -101,6 +101,7 @@
 
   <script type="text/handlebars" id="session-template">
     <h2>{{ name }}</h2>
+    <p class="favorite"><button data-session-id="{{ id }}" class="favorite-button pictos">f</button></p>
     <p><small>When:</small> {{ formattedTime this }}</p>
     <p><small>Track:</small> {{ trackName this }}</p>
     <p>{{> allSpeakerPhotos }}</p>
@@ -129,6 +130,7 @@
 <script language="javascript" src="/lib/bind-navigation.js"></script>
 <script language="javascript" src="/lib/tracks-container.js"></script>
 <script language="javascript" src="/lib/sessions-container.js"></script>
+<script language="javascript" src="/lib/favoritable.js"></script>
 <script language="javascript" src="/lib/routes.js"></script>
 <script language="javascript" src="/models/model-loader.js"></script>
 <script language="javascript" src="/models/track.js"></script>
