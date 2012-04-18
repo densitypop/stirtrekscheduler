@@ -18,19 +18,22 @@
   <link href="//get.pictos.cc/fonts/1369/1" rel="stylesheet" type="text/css">
   <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 
-  <script type="text/handlebars" id="schedule-navigation-template">
-    <nav class="back-button">
-      &laquo; <a href="/schedule" class="nav-button">Schedule</a>
-    </nav>
-  </script>
-
-  <script type="text/handlebars" id="tracks-navigation-template">
+  <script type="text/handlebars" id="track-sessions-list-template">
     <nav class="back-button">
       &laquo; <a href="/tracks" class="nav-button">Tracks</a>
     </nav>
+    {{{ renderSessionsList this }}}
   </script>
 
-  <script type="text/handlebars" id="sessions-list-template">
+  <script type="text/handlebars" id="schedule-sessions-list-template">
+    <nav class="back-button">
+      &laquo; <a href="/schedule" class="nav-button">Schedule</a>
+    </nav>
+    {{{ renderSessionsList this }}}
+
+  </script>
+
+  <script type="text/handlebars" id="sessions-list-partial">
     <ol class="sessions-list group">
       {{#each this}}
       <li class="sessions-list-item">
@@ -84,6 +87,18 @@
     </ol>
   </script>
 
+  <script type="text/handlebars" id="back-to-tracks-template">
+    <nav class="secondary-nav">
+      &laquo; <a href="/tracks" class="nav-button back">Back</a>
+    </nav>
+  </script>
+
+  <script type="text/handlebars" id="back-to-schedule-template">
+    <nav class="secondary-nav">
+      &laquo; <a href="/schedule" class="nav-button back">Back</a>
+    </nav>
+  </script>
+
   <script type="text/handlebars" id="session-template">
     <h2>{{ name }}</h2>
     <p><small>When:</small> {{ formattedTime this }}</p>
@@ -93,7 +108,7 @@
   </script>
 
   <script type="text/handlebars" id="home-template">
-    <nav>
+    <nav class="nav-primary">
       <ul>
         <li><a data-template-id="tracks-template" class="nav-button" href="/tracks">Tracks</a></li>
         <li><a data-template-id="schedule-template" class="nav-button" href="/schedule">Schedule</a></li>
