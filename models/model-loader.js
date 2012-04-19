@@ -54,9 +54,9 @@
     return _(sessions)
   }
   ModelLoader.allSessions = function(){
-    return ModelLoader._allSessions().sortBy(function(session){
+    return _(ModelLoader._allSessions().sortBy(function(session){
       return session.timeSlot().sortVal()
-    })
+    }))
   }
   ModelLoader.sessionsByTimeSlotId = function(timeSlotId){
     return ModelLoader.allSessions().select(function(session){
