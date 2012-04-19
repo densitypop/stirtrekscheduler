@@ -20,10 +20,13 @@ module.exports = {
       ModelLoader.allTracks().should.eql(actual)
     },
     "loads sessions by track id": function(){
+      var previous = App.Session
+      App.Session = function(a,b,c,d,e,f,g) { return {id:a,name:b,trackId:f} }
       var sessions = [{Id:1, Name:"Session 1", TrackId:"1"},{Id:2, Name:"Session 2", TrackId:"2"}],
-          expected = [{id:1, name:"Session 1"}]
+          expected = [{id:1, name:"Session 1", trackId:"1"}]
       ModelLoader.cachedData = { Sessions: _(sessions) }
       ModelLoader.sessionsByTrackId("1").should.eql(expected)
+      App.Session = previous
     },
     "loads time slots by id": function(){
       var timeSlot = { Id: "1", StartTime: "10:00 AM", EndTime: "11:00 AM" },
@@ -50,17 +53,36 @@ module.exports = {
       ModelLoader.allTimeSlots().map(function(timeSlot){ return timeSlot.id }).
         should.eql(expected.map(function(timeSlot){ return timeSlot.id }))
     },
+    "loads all sessions sorted by time slot ascending": function(){
+      var sessions = [{id:1, name:"Session 1", timeSlotId:"1"},{id:2, name:"Session 2", timeSlotId:"2"},{id:3, name:"Session 3", timeSlotId:"3"}]
+      sessions[0].timeSlot = function(){
+        return App.TimeSlot("1", "11:00 AM", "12:00 PM")
+      }
+      sessions[1].timeSlot = function(){
+        return App.TimeSlot("2", "10:00 AM", "11:00 AM")
+      }
+      sessions[2].timeSlot = function(){
+        return App.TimeSlot("3", "12:00 PM", "1:00 PM")
+      }
+      var expected = [{ id:2,name:"Session 2"}, {id:1,name:"Session 1"},{id:3,name:"Session 3"}]
+      ModelLoader._allSessions = function(){ return _(sessions) }
+      ModelLoader.allSessions().map(function(session){ return session.id }).
+        should.eql(expected.map(function(session){ return session.id }))
+    },
     "loads all sessions by time slot id": function(){
-      var sessions = [{Id:1, Name:"Session 1", TimeSlotId:"1"},{Id:2, Name:"Session 2", TimeSlotId:"2"}],
-          expected = [{id:1, name:"Session 1"}]
-      ModelLoader.cachedData = { Sessions: _(sessions) }
+      var sessions = [{id:1, name:"Session 1", timeSlotId:"1"},{id:2, name:"Session 2", timeSlotId:"2"}],
+          expected = [sessions[0]]
+      ModelLoader.allSessions = function(){ return _(sessions) }
       ModelLoader.sessionsByTimeSlotId("1").should.eql(expected)
     },
     "loads session by id": function(){
-      var sessions = [{Id:1, Name:"Session 1"},{Id:2, Name:"Session 2"}],
+      var sessions = [{id:1, name:"Session 1"},{id:2, name:"Session 2"}],
           expected = {id:1, name:"Session 1"}
-      ModelLoader.cachedData = { Sessions: _(sessions) }
+      sinon.stub(ModelLoader, "allSessions", function(){
+        return _(sessions)
+      })
       ModelLoader.sessionById("1").should.eql(expected)
+        ModelLoader.allSessions.restore()
     },
     "loads a track by id": function(){
       var tracks = [{Id:"1", Name:"Track 1"},{Id:2, Name:"Track 2"}],
@@ -69,14 +91,17 @@ module.exports = {
       ModelLoader.trackById("1").should.eql(expected)
     },
     "loads favorite sessions": function(){
-      var sessions = [{Id:1, Name:"Session 1"},{Id:"2", Name:"Session 2"}],
+      var sessions = [{id:1, name:"Session 1"},{id:"2", name:"Session 2"}],
           expected = [{id:1, name:"Session 1"}]
       sinon.stub(localStorage, "getItem", function(){
         return '["1"]'
       })
-      ModelLoader.cachedData = { Sessions: _(sessions) }
+      sinon.stub(ModelLoader, "allSessions", function(){
+        return _(sessions)
+      })
       ModelLoader.favoriteSessions().should.eql(expected)
       localStorage.getItem.restore()
+      ModelLoader.allSessions.restore()
     },
     "loads favorite session by session id": function(){
       var sessions = [{Id:1, Name:"Session 1"},{Id:"2", Name:"Session 2"}],
@@ -88,10 +113,13 @@ module.exports = {
       ModelLoader.favoriteBySessionId(1).should.eql(expected)
     },
     "loads sessions by tags": function(){
-      var sessions = [{Id:1, Name:"Session 1", Tags:["tag1", "tag2"]},{Id:"2", Name:"Session 2", Tags:["tag2"]}],
-          expected = [{id:1, name:"Session 1"}]
-      ModelLoader.cachedData = { Sessions: _(sessions) }
+      var sessions = [{id:"1", name:"Session 1", tags:["tag1", "tag2"]},{id:"2", name:"Session 2", tags:["tag2"]}],
+          expected = [{id:"1", name:"Session 1",tags:["tag1","tag2"]}]
+      sinon.stub(ModelLoader, "allSessions", function(){
+        return _(sessions)
+      })
       ModelLoader.sessionsByTagNames(["tag1"]).should.eql(expected)
+      ModelLoader.allSessions.restore()
     }
   }
 }

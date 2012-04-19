@@ -20,12 +20,10 @@
     });
   }
   ModelLoader.sessionsByTrackId = function(trackId){
-    var rawSessions = ModelLoader.cachedData.Sessions.select(function(session){
-      return session.TrackId == trackId
+    var sessions = ModelLoader.allSessions().select(function(session){
+      return session.trackId == trackId
     })
-    return rawSessions.map(function(session){
-      return App.Session(session.Id, session.Name, session.Abstract, session.SpeakerIds, session.TimeSlotId, session.TrackId, session.Tags)
-    })
+    return sessions
   }
   ModelLoader.timeSlotById = function(id){
     var raw = ModelLoader.cachedData.TimeSlots.select(function(timeSlot){
@@ -49,19 +47,27 @@
       return timeSlot.sortVal()
     })
   }
-  ModelLoader.sessionsByTimeSlotId = function(timeSlotId){
-    var rawSessions = ModelLoader.cachedData.Sessions.select(function(session){
-      return session.TimeSlotId == timeSlotId
-    })
-    return rawSessions.map(function(session){
+  ModelLoader._allSessions = function(){
+    var sessions = ModelLoader.cachedData.Sessions.map(function(session){
       return App.Session(session.Id, session.Name, session.Abstract, session.SpeakerIds, session.TimeSlotId, session.TrackId, session.Tags)
+    })
+    return _(sessions)
+  }
+  ModelLoader.allSessions = function(){
+    return ModelLoader._allSessions().sortBy(function(session){
+      return session.timeSlot().sortVal()
+    })
+  }
+  ModelLoader.sessionsByTimeSlotId = function(timeSlotId){
+    return ModelLoader.allSessions().select(function(session){
+      return session.timeSlotId == timeSlotId
     })
   }
   ModelLoader.sessionById = function(id){
-    var session = ModelLoader.cachedData.Sessions.select(function(session){
-      return session.Id == id
+    var session = ModelLoader.allSessions().select(function(session){
+      return session.id == id
     })[0]
-    return App.Session(session.Id, session.Name, session.Abstract, session.SpeakerIds, session.TimeSlotId, session.TrackId, session.Tags)
+    return session
   }
   ModelLoader.trackById = function(id){
     var track = ModelLoader.cachedData.Tracks.select(function(track){
@@ -71,15 +77,13 @@
   }
   ModelLoader.favoriteSessions = function(){
     var favorites = JSON.parse(localStorage.getItem("stirtrek-favorites")),
-        sessions = ModelLoader.cachedData.Sessions.select(function(session){
-          if(_.include(favorites, JSON.stringify(session.Id))){
+        sessions = ModelLoader.allSessions().select(function(session){
+          if(_.include(favorites, JSON.stringify(session.id))){
             return session
           }
         })
     if(sessions.length == 0) return []
-    return sessions.map(function(session){
-      return App.Session(session.Id, session.Name, session.Abstract, session.SpeakerIds, session.TimeSlotId, session.TrackId, session.Tags)
-    })
+    return sessions
   },
   ModelLoader.favoriteBySessionId = function(id){
     return _.select(ModelLoader.favoriteSessions(), function(session){
@@ -87,11 +91,8 @@
     })[0]
   }
   ModelLoader.sessionsByTagNames = function(tagNames){
-    var rawSessions = ModelLoader.cachedData.Sessions.select(function(session){
-      return _.intersection(session.Tags, tagNames).length > 0
-    })
-    return rawSessions.map(function(session){
-      return App.Session(session.Id, session.Name, session.Abstract, session.SpeakerIds, session.TimeSlotId, session.TrackId, session.Tags)
+    return ModelLoader.allSessions().select(function(session){
+      return _.intersection(session.tags, tagNames).length > 0
     })
   }
 
