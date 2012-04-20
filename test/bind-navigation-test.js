@@ -4,7 +4,7 @@ require("../lib/bind-navigation")
 module.exports = {
   "bindNavigation": {
     beforeEach: function(){
-      this.$container = $("<div>", { id: "test-container" })
+      this.$container = $("<div class='primary-navigation'>", { id: "test-container" })
       this.$link = $("<a class='nav-button' href='#'></a>")
 
       this.router = { start: function(){ }, routeTo: function(){ } }
@@ -26,7 +26,6 @@ module.exports = {
       linkSpy.calledOnce.should.be.true
     },
     "binds to specific URLs with callbacks": function(){
-      console.log("1")
       var linkSpy = sinon.spy(),
           href = "/blah",
           routes = {},
