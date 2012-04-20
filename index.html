@@ -125,19 +125,20 @@
   </script>
 
   <script type="text/handlebars" id="home-template">
-    <nav class="nav-primary">
-      <ul>
-        <li><a data-template-id="tracks-template" class="nav-button" href="/tracks">Tracks</a></li>
-        <li><a data-template-id="schedule-template" class="nav-button" href="/schedule">Schedule</a></li>
-        <li><a data-template-id="schedule-template" class="nav-button" href="/favorites">Favorites</a></li>
-      </ul>
-    </nav>
   </script>
 </head>
 <body class="page-wrapper">
 <header>
   <h1>StirTrek Scheduler</h1>
 </header>
+<nav class="primary-navigation">
+  <ul>
+    <li class="navigation-item"><a data-template-id="tracks-template" class="navigation-button" href="/">Home</a></li>
+    <li class="navigation-item"><a data-template-id="tracks-template" class="navigation-button" href="/tracks">Tracks</a></li>
+    <li class="navigation-item"><a data-template-id="schedule-template" class="navigation-button" href="/schedule">Schedule</a></li>
+    <li class="navigation-item"><a data-template-id="schedule-template" class="navigation-button" href="/favorites">Favorites</a></li>
+  </ul>
+</nav>
 <section id="main-content">
 </section>
 <script language="javascript" src="/vendor/handlebars.js"></script>

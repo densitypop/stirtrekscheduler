@@ -33,6 +33,52 @@ button.favorite-button {
   -webkit-text-stroke: 1px #999;
 }
 
+.primary-navigation {
+  background-color: #ccc;
+  ul {
+    width: 100%;
+  }
+  .navigation-item {
+    display: inline-block;
+    width: 24%;
+    &:hover {
+      background-color: #AF4C5E;
+      color: #eee;
+    }
+  }
+  @media only screen and (max-width: 320px) {
+    .navigation-item {
+      display: inline-block;
+      width: auto;
+      padding: 0 5px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  .navigation-button {
+    width: 100%;
+    font-family: verdana, sans-serif;
+    font-weight: bold;
+    font-size: .75em;
+    display: inline-block;
+    padding: 25px 0;
+    text-transform: uppercase;
+    text-align: center;
+    &:hover {
+      color: #eee;
+    }
+  }
+}
+
+.navigation-item.is-active {
+  background-color: #AF4C5E;
+  color: #eee;
+  .navigation-button {
+    color: #eee;
+  }
+}
+
 .nav-button.back {
   display: inline;
 }

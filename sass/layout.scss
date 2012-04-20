@@ -4,18 +4,15 @@
   text-align: center;
 }
 
-header {
-  margin-top: 1em;
+body>header {
+  text-align: left;
+  background-color: #333;
+  color: #eee;
+  padding: 10px 5px
 }
 
 .nav-primary {
   margin-top: 2em;
-}
-
-.nav-primary .nav-button {
-  display: block;
-  padding: 20px;
-  text-transform: uppercase;
 }
 
 .group:before,
