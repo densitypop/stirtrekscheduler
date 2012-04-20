@@ -22,11 +22,14 @@ module.exports = {
     "loads sessions by track id": function(){
       var previous = App.Session
       App.Session = function(a,b,c,d,e,f,g) { return {id:a,name:b,trackId:f} }
-      var sessions = [{Id:1, Name:"Session 1", TrackId:"1"},{Id:2, Name:"Session 2", TrackId:"2"}],
+      var sessions = [{id:1, name:"Session 1", trackId:"1"},{id:2, name:"Session 2", trackId:"2"}],
           expected = [{id:1, name:"Session 1", trackId:"1"}]
-      ModelLoader.cachedData = { Sessions: _(sessions) }
+      sinon.stub(ModelLoader, "allSessions", function(){
+        return _(sessions)
+      })
       ModelLoader.sessionsByTrackId("1").should.eql(expected)
       App.Session = previous
+      ModelLoader.allSessions.restore()
     },
     "loads time slots by id": function(){
       var timeSlot = { Id: "1", StartTime: "10:00 AM", EndTime: "11:00 AM" },
