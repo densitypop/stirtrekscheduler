@@ -11,6 +11,10 @@ body>header {
   padding: 10px 5px
 }
 
+header+nav {
+  margin-bottom: 2em;
+}
+
 .nav-primary {
   margin-top: 2em;
 }

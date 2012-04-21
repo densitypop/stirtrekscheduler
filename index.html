@@ -24,7 +24,6 @@
 
   <script type="text/handlebars" id="schedule-sessions-list-template">
     {{{ renderSessionsList this }}}
-
   </script>
 
   <script type="text/handlebars" id="sessions-list-partial">
@@ -43,10 +42,10 @@
   </script>
 
   <script type="text/handlebars" id="tracks-template">
-    <ul>
+    <ul class="tracks-list">
       {{#each this}}
-      <li>
-        <a href="/tracks/{{ id }}" class="nav-button">
+      <li class="track-item">
+        <a href="/tracks/{{ id }}" class="track-navigation-item">
           <strong class="pictos nav-item-{{ toClassName name }}">{{ name }}</strong>
         </a>
       </li>

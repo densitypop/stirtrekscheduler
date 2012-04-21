@@ -79,6 +79,18 @@ button.favorite-button {
   }
 }
 
+.tracks-list {
+  .track-item {
+    display: inline-block;
+    width: 45%;
+    margin-bottom: 2em;
+  }
+}
+
+.track-item .track-navigation-item {
+  display: block;
+}
+
 .nav-item strong {
   font-size: .8em;
 }
