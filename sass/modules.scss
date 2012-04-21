@@ -95,36 +95,8 @@ button.favorite-button {
   font-size: .8em;
 }
 
-.nav-item-web:before {
-  content: 'w\A';
-}
-
-.nav-item-mobile:before {
-  content: 'm\A';
-}
-
-.nav-item-javascript:before {
-  content: 'j\A';
-}
-
-.nav-item-cloud:before {
-  content: 'c\A';
-}
-
-.nav-item-quality:before {
-  content: 'q\A';
-}
-
-.nav-item-windows:before {
-  content: '8\A';
-}
-
-.nav-item-ux:before {
-  content: 'u\A';
-}
-
-.nav-item-misc:before {
-  content: '*\A';
+[data-icon]:before {
+  content: attr(data-icon) '\A';
 }
 
 .schedule-list {

@@ -46,7 +46,7 @@
       {{#each this}}
       <li class="track-item">
         <a href="/tracks/{{ id }}" class="track-navigation-item">
-          <strong class="pictos nav-item-{{ toClassName name }}">{{ name }}</strong>
+          <strong class="pictos" data-icon="{{ iconName name }}">{{ name }}</strong>
         </a>
       </li>
       {{/each}}
