@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+
+var express = require('express');
+var ecstatic = require('ecstatic');
+
+var app = express.createServer();
+app.use(ecstatic(__dirname));
+app.listen(8000);
+
+console.log('Listening on :8000');
