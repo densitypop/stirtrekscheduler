@@ -125,3 +125,39 @@ button.favorite-button {
     font-size: .5em;
   }
 }
+
+.home-content {
+  strong {
+    display: block;
+    font-family: verdana, sans-serif;
+    font-size: 1em;
+    text-transform: lowercase;
+    font-weight: bold;
+    margin-bottom: .5em;
+  }
+  p {
+    line-height: 1.25em;
+    margin-bottom: .75em;
+    margin-left: 2em;
+    font-style: italic;
+    small {
+      font-size: 1.03em;
+    }
+    a {
+      display: inline-block;
+      font-size: 1.5em;
+      font-style: normal;
+      padding: 5px;
+      margin-left: -5px;
+    }
+  }
+  position: relative;
+  text-align: left;
+  padding-left: 2em;
+  top: -60px;
+}
+
+.stir-trek-logo {
+  width: 100%;
+  max-width: 520px;
+}
