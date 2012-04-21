@@ -13,6 +13,8 @@
     "underscore": "*"
   },
   "devDependencies": {
+    "express": "*",
+    "ecstatic": "*",
     "mocha": "*",
     "jsdom": "*",
     "zepto-node": "*",
