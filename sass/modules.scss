@@ -84,12 +84,11 @@ button.favorite-button {
   }
 }
 
-.tracks-list {
-  .track-item {
-    display: inline-block;
-    width: 45%;
-    margin-bottom: 2em;
-  }
+.two-column-list-item {
+  display: inline-block;
+  width: 45%;
+  margin-bottom: 2em;
+  text-align: center;
 }
 
 .track-item .track-navigation-item {
@@ -102,10 +101,6 @@ button.favorite-button {
 
 [data-icon]:before {
   content: attr(data-icon) '\A';
-}
-
-.schedule-list {
-  text-align: left;
 }
 
 .article-with-image {

@@ -37,9 +37,9 @@
   </script>
 
   <script type="text/handlebars" id="tracks-template">
-    <ul class="tracks-list">
+    <ul>
       {{#each this}}
-      <li class="track-item">
+      <li class="two-column-list-item">
         <a href="/tracks/{{ id }}" class="track-navigation-item">
           <strong class="pictos" data-icon="{{ iconName name }}">{{ name }}</strong>
         </a>
@@ -60,10 +60,10 @@
   </script>
 
   <script type="text/handlebars" id="schedule-template">
-    <ol class="schedule-list">
+    <ol>
     {{#each this}}
-    <li>
-      <a href="/schedule/{{ id }}" class="nav-button">{{ startTime }} - {{ endTime }}</a>
+    <li class="two-column-list-item">
+      <a href="/schedule/{{ id }}" class="nav-button">{{ startTime }} &ndash; <br>{{ endTime }}</a>
     </li>
     {{/each}}
     </ol>
