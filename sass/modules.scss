@@ -5,6 +5,11 @@
   font-weight: normal;
 }
 
+.centered-content {
+  margin: 0 auto;
+  max-width: 90%;
+}
+
 button.favorite-button {
   -webkit-appearance: none;
   background-color: inherit;
@@ -103,26 +108,24 @@ button.favorite-button {
   text-align: left;
 }
 
-.sessions-list {
-  max-width: 75%;
-  margin: 0 auto;
-}
-
-.sessions-list .sessions-list-item {
-  float: left;
-  text-align: left;
-  width: 35%;
-  margin-bottom: .5em;
-  &:nth-child(odd){
-    padding-right: 15%;
+.list-item-with-preview {
+  margin-bottom: 2em;
+  color: #333;
+  p,small {
+    text-align: left;
   }
   p {
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: .85em;
+    font-size: 1.25em;
   }
-  .session-time {
-    font-family: Helvetica;
-    font-size: .5em;
+  small {
+    display: block;
+    font-size: .65em;
+  }
+  .item-preview {
+    float: left;
+    margin-right: 1em;
+    .item-caption {
+    }
   }
 }
 

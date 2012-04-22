@@ -19,13 +19,17 @@
   <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 
   <script type="text/handlebars" id="sessions-list-template">
-    <ol class="sessions-list group">
+    <ol class="centered-content">
       {{#each this}}
-      <li class="sessions-list-item">
+      <li class="list-item-with-preview group">
         <a class="nav-button" href="/sessions/{{ id }}">
-          <p><img alt="{{ firstSpeakerName this }}" src="{{ firstSpeakerPhotoUrl this }}"></p>
-          <p class="session-time">{{ formattedTime this }}</p>
-          <p>{{ allSpeakersNames this }}</p>
+          <figure class="item-preview">
+            <img alt="{{ firstSpeakerName this }}" src="{{ firstSpeakerPhotoUrl this }}">
+            <figcaption class="item-caption">
+              {{ allSpeakersNames this }}
+            </figcaption>
+          </figure>
+          <small>{{ formattedTime this }}</small>
           <p>{{ name }}</p>
         </a>
       </li>
