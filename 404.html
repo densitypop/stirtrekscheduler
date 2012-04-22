@@ -18,16 +18,19 @@
   <link href="//get.pictos.cc/fonts/1369/1" rel="stylesheet" type="text/css">
   <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 
+  <script type="text/handlebars" id="session-preview-partial">
+    <a class="nav-button" href="/sessions/{{ id }}">
+      <img class="item-image" alt="{{ firstSpeakerName this }}" src="{{ firstSpeakerPhotoUrl this }}">
+      <p>{{ name }}</p>
+      <small><em>{{ allSpeakersNames this }}</em></small>
+      <small>{{ formattedTime this }}</small>
+    </a>
+  </script>
   <script type="text/handlebars" id="sessions-list-template">
     <ol class="centered-content">
       {{#each this}}
-      <li class="list-item-with-preview group">
-        <a class="nav-button" href="/sessions/{{ id }}">
-          <img class="item-preview" alt="{{ firstSpeakerName this }}" src="{{ firstSpeakerPhotoUrl this }}">
-          <p>{{ name }}</p>
-          <small><em>{{ allSpeakersNames this }}</em></small>
-          <small>{{ formattedTime this }}</small>
-        </a>
+      <li class="article-with-image group">
+        {{> sessionPreview }}
       </li>
       {{/each}}
     </ol>
@@ -67,9 +70,9 @@
   </script>
 
   <script type="text/handlebars" id="session-template">
-    <article class="list-item-with-preview centered-content">
+    <article class="article-with-image centered-content">
       <header class="group">
-        <p class="item-preview">{{> allSpeakerPhotos }}</p>
+        <p class="item-image">{{> allSpeakerPhotos }}</p>
         <small><em>{{ allSpeakersNames this }}</em></small>
         <small>{{ formattedTime this }}</small>
         <small class="pictos" data-icon="{{ iconNameFromSession this }}" data-icon-caption="{{ trackName this }}"></small>
@@ -85,18 +88,17 @@
     <aside class="favorite">
       <button data-session-id="{{ id }}" class="favorite-button pictos">f</button>
     </aside>
+    <aside class="centered-content">
     {{#whenFavorite this}}
-      Since you liked this session, you may also enjoy:
-      <ul class="similar-sessions">
+      <h2 class="list-heading">You may also be interested in:</h2>
+      <ul>
       {{#similarSessions this}}
-        <a class="nav-button" href="/sessions/{{ id }}">
-          <p><img alt="{{ firstSpeakerName this }}" src="{{ firstSpeakerPhotoUrl this }}"></p>
-          <p class="session-time">{{ formattedTime this }}</p>
-          <p>{{ allSpeakersNames this }}</p>
-          <p>{{ name }}</p>
-        </a>
+        <li class="article-with-image group">
+        {{> sessionPreview }}
+        </li>
       {{/similarSessions}}
     {{/whenFavorite}}
+    </aside>
   </script>
 
   <script type="text/handlebars" id="favorites-list-template">
