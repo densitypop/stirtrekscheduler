@@ -109,8 +109,18 @@ button.favorite-button {
 }
 
 .list-item-with-preview {
-  margin-bottom: 2em;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
   color: #333;
+  border-bottom: solid 1px white;
+  -moz-box-shadow: 0 1px 1px -1px #333;
+  -webkit-box-shadow: 0 1px 1px -1px #333;
+  box-shadow: 0 1px 1px -1px #333;
+  &:last-child {
+    border-bottom: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
   p,small {
     text-align: left;
   }
@@ -120,12 +130,15 @@ button.favorite-button {
   small {
     display: block;
     font-size: .65em;
+    color: #333;
+    em {
+      font-size: 1.25em;
+      font-weight: bold;
+    }
   }
   .item-preview {
     float: left;
     margin-right: 1em;
-    .item-caption {
-    }
   }
 }
 

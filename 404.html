@@ -23,14 +23,10 @@
       {{#each this}}
       <li class="list-item-with-preview group">
         <a class="nav-button" href="/sessions/{{ id }}">
-          <figure class="item-preview">
-            <img alt="{{ firstSpeakerName this }}" src="{{ firstSpeakerPhotoUrl this }}">
-            <figcaption class="item-caption">
-              {{ allSpeakersNames this }}
-            </figcaption>
-          </figure>
-          <small>{{ formattedTime this }}</small>
+          <img class="item-preview" alt="{{ firstSpeakerName this }}" src="{{ firstSpeakerPhotoUrl this }}">
           <p>{{ name }}</p>
+          <small><em>{{ allSpeakersNames this }}</em></small>
+          <small>{{ formattedTime this }}</small>
         </a>
       </li>
       {{/each}}
