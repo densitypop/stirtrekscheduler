@@ -4,13 +4,9 @@
 
     var generateSpeakerPhotoUrl = function(speaker){
       var url = "http://www.stirtrek.com/Content/Images/Speakers/"
+      url += App.speakerNamesMap[speaker.name] || speaker.name
+      url += ".png"
 
-      url += (speaker.name == "Brian H. Prince" ? "Brian Prince" : speaker.name)
-      if(speaker.name.match(/Weirich$|Sell$/)){
-        url += ".jpg"
-      } else {
-        url += ".png"
-      }
       return url
     }
 
