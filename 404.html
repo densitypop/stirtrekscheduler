@@ -21,7 +21,7 @@
   <script type="text/handlebars" id="session-preview-partial">
     <a class="nav-button" href="/sessions/{{ id }}">
       <img class="item-image" alt="{{ firstSpeakerName this }}" src="{{ firstSpeakerPhotoUrl this }}">
-      <p>{{ name }}</p>
+      <h2 class="title">{{ name }}</h2>
       <small><em>{{ allSpeakersNames this }}</em></small>
       <small>{{ formattedTime this }}</small>
     </a>
@@ -141,7 +141,7 @@
     </li>
   </ul>
 </nav>
-<section id="main-content" class="content-container" style="display:none;">
+<section id="main-content" style="display:none;">
   <div class="container">
     <h1>Not found <span>:(</span></h1>
     <p>Sorry, but the page you were trying to view does not exist.</p>

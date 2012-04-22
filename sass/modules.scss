@@ -104,6 +104,7 @@ button.favorite-button {
 }
 
 .article-with-image {
+  text-align: left;
   padding-bottom: 1em;
   margin-bottom: 1em;
   color: #333;
@@ -119,16 +120,12 @@ button.favorite-button {
   header {
     margin-bottom: .5em;
   }
-  small {
-    text-align: left;
-  }
   p {
     font-size: 1.25em;
     line-height: 1.25em;
   }
   .title {
     margin-bottom: .5em;
-    text-align: left;
   }
   [data-icon]:before {
     content: attr(data-icon);
