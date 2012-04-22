@@ -46,20 +46,14 @@
   </script>
 
   <script type="text/handlebars" id="all-speaker-photos-partial">
-    <ul>
       {{#speakers}}
-      <li>{{> speakerPhoto}}</li>
+      {{> speakerPhoto}}
       {{/speakers}}
     </ul>
   </script>
 
   <script type="text/handlebars" id="speaker-photo-partial">
-    <figure>
-      <img src="{{ photoUrl }}" alt="{{ name }}">
-      <figcaption>
-        <p>{{ name }}</p>
-      </figcaption>
-    </figure>
+      <img src="{{ photoUrl }}" width="50" height="50" alt="{{ name }}">
   </script>
 
   <script type="text/handlebars" id="schedule-template">
@@ -73,12 +67,24 @@
   </script>
 
   <script type="text/handlebars" id="session-template">
-    <h2>{{ name }}</h2>
-    <p class="favorite"><button data-session-id="{{ id }}" class="favorite-button pictos">f</button></p>
-    <p><small>When:</small> {{ formattedTime this }}</p>
-    <p><small>Track:</small> {{ trackName this }}</p>
-    <p>{{> allSpeakerPhotos }}</p>
-    <p>{{ abstract }}</p>
+    <article class="list-item-with-preview centered-content">
+      <header class="group">
+        <p class="item-preview">{{> allSpeakerPhotos }}</p>
+        <small><em>{{ allSpeakersNames this }}</em></small>
+        <small>{{ formattedTime this }}</small>
+        <small class="pictos" data-icon="{{ iconNameFromSession this }}" data-icon-caption="{{ trackName this }}"></small>
+      </header>
+      <h2 class="title">{{ name }}</h2>
+      <h3 class="section-title">Abstract</h3>
+      <p class="article-body">{{ abstract }}</p>
+      <h3 class="section-title">Bio</h3>
+      {{#speakers}}
+        <p class="article-body">{{ bio }}</p>
+      {{/speakers}}
+    </article>
+    <aside class="favorite">
+      <button data-session-id="{{ id }}" class="favorite-button pictos">f</button>
+    </aside>
     {{#whenFavorite this}}
       Since you liked this session, you may also enjoy:
       <ul class="similar-sessions">
@@ -127,7 +133,7 @@
     </li>
   </ul>
 </nav>
-<section id="main-content">
+<section id="main-content" class="content-container">
   <div class="container">
     <h1>Not found <span>:(</span></h1>
     <p>Sorry, but the page you were trying to view does not exist.</p>

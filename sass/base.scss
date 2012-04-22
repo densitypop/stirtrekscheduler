@@ -1,6 +1,27 @@
+h2 {
+  font-family: verdana, sans-serif;
+  font-weight: bold;
+  font-size: 1em;
+  line-height: 1.25em;
+}
+
+h3 {
+  font-family: verdana, sans-serif;
+  font-size: .5em;
+  line-height: 1.25em;
+  font-weight: bold;
+  text-transform: lowercase;
+  background-color: #333;
+  color: #e8e8e8;
+  display: inline-block;
+  padding: 0 5px;
+  padding-bottom: 2px;
+}
+
 body {
   background-color: #e8e8e8;
   -webkit-font-smoothing: antialiased;
+  font-size: 100%;
 }
 a {
   color: #AF4C5E;

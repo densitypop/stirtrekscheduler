@@ -121,16 +121,36 @@ button.favorite-button {
     -webkit-box-shadow: none;
     box-shadow: none;
   }
-  p,small {
+  header {
+    margin-bottom: .5em;
+  }
+  small {
     text-align: left;
   }
   p {
     font-size: 1.25em;
+    line-height: 1.25em;
+  }
+  .title {
+    margin-bottom: .5em;
+    text-align: left;
+  }
+  [data-icon]:before {
+    content: attr(data-icon);
+    font-size: 1.75em;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+  [data-icon]:after {
+    content: attr(data-icon-caption);
+    vertical-align: baseline;
   }
   small {
     display: block;
     font-size: .65em;
     color: #333;
+    font-family: verdana, sans-serif;
+    margin-bottom: 5px;
     em {
       font-size: 1.25em;
       font-weight: bold;
@@ -139,6 +159,25 @@ button.favorite-button {
   .item-preview {
     float: left;
     margin-right: 1em;
+  }
+  .section-title {
+    margin-bottom: .5em;
+  }
+  .article-body+.section-title, .article-body+.article-body {
+    margin-top: 1.5em;
+  }
+}
+
+aside.favorite {
+  position: absolute;
+  top: 126px;
+  left: 75%;
+}
+@media only screen and (max-width: 320px) {
+  aside.favorite {
+    position: absolute;
+    top: 126px;
+    left: 65%;
   }
 }
 
@@ -174,6 +213,6 @@ button.favorite-button {
 }
 
 .stir-trek-logo {
-  width: 100%;
+  width: 90%;
   max-width: 520px;
 }

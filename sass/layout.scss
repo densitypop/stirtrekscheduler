@@ -1,7 +1,10 @@
 .page-wrapper {
   max-width: 1140px;
   margin: 0 auto;
-  text-align: center;
+}
+
+.content-container {
+  margin-left: 1em;
 }
 
 body>header {
@@ -17,6 +20,10 @@ header+nav {
 
 .nav-primary {
   margin-top: 2em;
+}
+
+aside.favorite {
+  float: right;
 }
 
 .group:before,
