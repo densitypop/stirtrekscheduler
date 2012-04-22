@@ -36,5 +36,4 @@
   } else {
     App.Session = Session
   }
-})()
-
+})();

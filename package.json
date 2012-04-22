@@ -13,6 +13,7 @@
     "underscore": "*"
   },
   "devDependencies": {
+    "uglify-js": "*",
     "express": "*",
     "ecstatic": "*",
     "mocha": "*",
@@ -20,7 +21,8 @@
     "zepto-node": "*",
     "sinon": "*",
     "sinon-mocha": "*",
-    "localStorage": "*"
+    "localStorage": "*",
+    "smoosh": "*"
   },
   "optionalDependencies": {}
 }

@@ -23,7 +23,4 @@
   } else {
     App.Speaker = Speaker
   }
-})()
-
-
-
+})();

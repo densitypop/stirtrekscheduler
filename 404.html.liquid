@@ -10,10 +10,15 @@
 
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
+  {% render_mode %}
+  {% development %}
   <link href="/css/main.css" type="text/css" rel="stylesheet">
+  {% production %}
+  <link href="/css/main.min.css" type="text/css" rel="stylesheet">
+  {% endrender_mode %}
 
   <link href="//get.pictos.cc/fonts/1369/1" rel="stylesheet" type="text/css">
-
+  {% raw %}
   <script type="text/handlebars" id="session-preview-partial">
     {{#withSpeaker}}
     <a class="nav-button" href="/sessions/{{ id }}">
@@ -122,6 +127,7 @@
       <p><small>my</small> <a href="/favorites">favorites</a></p>
     </section>
   </script>
+  {% endraw %}
 </head>
 <body class="page-wrapper">
 <header>
@@ -149,9 +155,11 @@
     <p>Sorry, but the page you were trying to view does not exist.</p>
   </div>
 </section>
+{% render_mode %}
+{% development %}
+<script language="javascript" src="/vendor/jquery.js"></script>
 <script language="javascript" src="/vendor/handlebars.js"></script>
 <script language="javascript" src="/vendor/underscore.js"></script>
-<script language="javascript" src="/vendor/jquery.js"></script>
 <script language="javascript" src="/lib/app.js"></script>
 <script language="javascript" src="/lib/bind-navigation.js"></script>
 <script language="javascript" src="/lib/tracks-container.js"></script>
@@ -163,6 +171,10 @@
 <script language="javascript" src="/models/session.js"></script>
 <script language="javascript" src="/models/time-slot.js"></script>
 <script language="javascript" src="/models/speaker.js"></script>
+{% production %}
+<script language="javascript" src="/js/vendor.min.js"></script>
+<script language="javascript" src="/js/app.min.js"></script>
+{% endrender_mode %}
 <script language="javascript">
   $(App.init);
 </script>

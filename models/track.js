@@ -13,4 +13,4 @@
   } else {
     App.Track = Track
   }
-})()
+})();

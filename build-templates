@@ -1,0 +1,38 @@
+#!/usr/bin/env ruby
+
+require 'liquid'
+
+class DevelopmentTag < Liquid::Block
+  def initialize(tag_name, markup, tokens)
+    @block = {}
+    super
+  end
+
+  def unknown_tag(tag, markup, tokens)
+    if ['development', 'production'].include?(tag)
+      push_block(tag, tokens)
+    else
+      super
+    end
+  end
+
+  def render(context)
+    current_mode = context['mode']
+    render_all(@block[current_mode], context)
+  end
+
+  private
+
+  def push_block(tag, tokens)
+    @block[tag] = [tokens.shift]
+  end
+
+  Liquid::Template.register_tag('render_mode', DevelopmentTag)
+end
+
+mode = ENV['MODE'] || 'development'
+template = Liquid::Template.parse(File.read("404.html.liquid"))
+
+File.open("404.html", "w") do |f|
+  f << template.render('mode' => mode)
+end

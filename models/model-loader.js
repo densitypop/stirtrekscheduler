@@ -101,4 +101,4 @@
   } else {
     App.ModelLoader = ModelLoader
   }
-})()
+})();

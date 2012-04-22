@@ -23,6 +23,4 @@
   } else {
     App.TimeSlot = TimeSlot
   }
-})()
-
-
+})();

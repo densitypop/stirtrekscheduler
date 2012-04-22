@@ -1,0 +1,12 @@
+{
+  "JSHINT_OPTS": { "asi": true, "boss": true, "browser": true, "eqnull": true },
+  "JAVASCRIPT": {
+    "DIST_DIR": "_build/js/",
+    "vendor": [ "vendor/jquery.js", "vendor/handlebars.js", "vendor/underscore.js" ],
+    "app": [ "lib/app.js", "lib/bind-navigation.js", "lib/favoritable.js", "lib/routes.js", "lib/sessions-container.js", "lib/tracks-container.js", "models/model-loader", "models/session", "models/speaker", "models/time-slot", "models/track" ]
+  },
+  "CSS": {
+    "DIST_DIR": "_build/css/",
+    "main": ["./css/main.css"]
+  }
+}
