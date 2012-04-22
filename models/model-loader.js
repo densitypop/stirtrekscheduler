@@ -82,9 +82,9 @@
             return session
           }
         })
-    if(sessions.length == 0) return []
+    if(sessions.length === 0) return []
     return sessions
-  },
+  }
   ModelLoader.favoriteBySessionId = function(id){
     return _.select(ModelLoader.favoriteSessions(), function(session){
       return session.id == id
