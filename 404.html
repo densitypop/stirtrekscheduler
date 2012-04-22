@@ -102,7 +102,13 @@
   </script>
 
   <script type="text/handlebars" id="favorites-list-template">
-    {{{ renderSessionsList this }}}
+    {{#nonEmptyList}}
+      {{> sessionsList }}
+    {{/nonEmptyList}}
+    {{#emptyList}}
+    <h2>Never again forget which sessions you want to attend!</h2>
+    <p class="blank-slate"><a href="/tracks">Browse the talks</a> or <a href="/schedule">look at the schedule</a>. <strong>Favorite</strong> the talks you want to attend. <strong>You will find them here</strong> when you need to remember what you were most interested in.</p>
+    {{/emptyList}}
   </script>
 
   <script type="text/handlebars" id="home-template">

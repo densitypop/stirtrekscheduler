@@ -3,6 +3,7 @@ h2 {
   font-weight: bold;
   font-size: 1em;
   line-height: 1.25em;
+  margin-bottom: 1em;
 }
 
 h3 {
@@ -23,6 +24,11 @@ body {
   -webkit-font-smoothing: antialiased;
   font-size: 100%;
 }
+
+strong {
+  font-weight: bold;
+}
+
 a {
   color: #AF4C5E;
   text-decoration: none;
