@@ -21,7 +21,7 @@
   {% raw %}
   <script type="text/handlebars" id="session-preview-partial">
     {{#withSpeaker}}
-    <a class="nav-button" href="/sessions/{{ id }}">
+    <a class="navigation-button" href="/sessions/{{ id }}">
         <img class="item-image" alt="{{ firstSpeakerName this }}" src="{{ firstSpeakerPhotoUrl this }}">
         <h2 class="title">{{ name }}</h2>
         <small><em>{{ allSpeakersNames this }}</em></small>
@@ -47,7 +47,7 @@
     <ul>
       {{#each this}}
       <li class="two-column-list-item">
-        <a href="/tracks/{{ id }}" class="track-navigation-item">
+        <a href="/tracks/{{ id }}" class="track-navigation-item navigation-button">
           <strong class="pictos" data-icon="{{ iconName name }}">{{ name }}</strong>
         </a>
       </li>
@@ -70,7 +70,7 @@
     <ol>
     {{#each this}}
     <li class="two-column-list-item">
-      <a href="/schedule/{{ id }}" class="nav-button">{{ startTime }} &ndash; <br>{{ endTime }}</a>
+      <a href="/schedule/{{ id }}" class="navigation-button">{{ startTime }} &ndash; <br>{{ endTime }}</a>
     </li>
     {{/each}}
     </ol>
@@ -114,7 +114,7 @@
     {{/nonEmptyList}}
     {{#emptyList}}
     <h2>Never again forget which sessions you want to attend!</h2>
-    <p class="blank-slate"><a href="/tracks">Browse the talks</a> or <a href="/schedule">look at the schedule</a>. <strong>Favorite</strong> the talks you want to attend. <strong>You will find them here</strong> when you need to remember what you were most interested in.</p>
+    <p class="blank-slate"><a href="/tracks" class="navigation-button">Browse the talks</a> or <a href="/schedule" class="navigation-button">look at the schedule</a>. <strong>Favorite</strong> the talks you want to attend. <strong>You will find them here</strong> when you need to remember what you were most interested in.</p>
     {{/emptyList}}
   </script>
 
@@ -122,9 +122,9 @@
     <img class="stir-trek-logo" src="/images/logo.png">
     <section class="home-content">
       <strong>View sessions:</strong>
-      <p><small>by</small> <a href="/tracks">track</a></p>
-      <p><small>by</small> <a href="/schedule">time</a></p>
-      <p><small>my</small> <a href="/favorites">favorites</a></p>
+      <p><small>by</small> <a href="/tracks" class="navigation-button">track</a></p>
+      <p><small>by</small> <a href="/schedule" class="navigation-button">time</a></p>
+      <p><small>my</small> <a href="/favorites" class="navigation-button">favorites</a></p>
     </section>
   </script>
   {% endraw %}
