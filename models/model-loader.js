@@ -76,9 +76,10 @@
     return App.Track(track.Id, track.Name)
   }
   ModelLoader.favoriteSessions = function(){
-    var favorites = JSON.parse(localStorage.getItem("stirtrek-favorites")),
+    var favorites = localStorage.getItem("stirtrek-favorites"),
         sessions = ModelLoader.allSessions().select(function(session){
-          if(_.include(favorites, JSON.stringify(session.id))){
+          var parsed = favorites && JSON.parse(favorites)
+          if(_.include(parsed, JSON.stringify(session.id))){
             return session
           }
         })
