@@ -92,7 +92,9 @@ button.favorite-button {
 }
 
 .track-item .track-navigation-item {
-  display: block;
+  display: inline-block;
+  height: 64px;
+  width: 100%;
 }
 
 .nav-item strong {
