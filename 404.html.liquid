@@ -130,6 +130,13 @@
       <p><small>my</small> <a href="/favorites" class="navigation-button">favorites</a></p>
     </section>
   </script>
+
+  <script type="text/handlebars" id="overlay-template">
+    <div class="overlay" style="display:none">
+      <h3>Please wait while I cache the schedule data...</h3>
+      <div class="portal-wait"></div>
+    </div>
+  </script>
   {% endraw %}
 </head>
 <body class="page-wrapper">
@@ -167,6 +174,7 @@
 <script language="javascript" src="/lib/bind-navigation.js"></script>
 <script language="javascript" src="/lib/tracks-container.js"></script>
 <script language="javascript" src="/lib/sessions-container.js"></script>
+<script language="javascript" src="/lib/wait-overlay.js"></script>
 <script language="javascript" src="/lib/favoritable.js"></script>
 <script language="javascript" src="/lib/routes.js"></script>
 <script language="javascript" src="/models/model-loader.js"></script>

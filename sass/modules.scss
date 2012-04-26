@@ -223,3 +223,67 @@ aside.favorite {
   }
   padding-right: 1em;
 }
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, .65);
+  text-align: center;
+  h3 {
+    font-color: #eee;
+    font-size: 2em;
+    background-color: transparent;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    text-transform: none;
+  }
+}
+
+@mixin portalBackground($col, $row) {
+  $portalGutter: 16px;
+  $portalGutterVert: 9px;
+  $portalBlock: 84px;
+  $portalStartX: -11px;
+  $portalStartY: -9px;
+  background: {
+    position: $portalStartX+(-1*$col*$portalBlock)+(-1*$col*$portalGutter) $portalStartY+(-1*$row*$portalBlock)+(-1*$row*$portalGutterVert);
+  }
+}
+
+
+.portal-wait {
+  margin: 0 auto;
+  background: {
+    image: url(/images/portal_symbols.gif);
+    repeat: no-repeat;
+  }
+  width: 84px;
+  height: 85px;
+  text-align: center;
+  @include portalBackground(0,0);
+  -webkit-animation: {
+    name: portal-transition;
+    timing-function: ease;
+    duration: 8s;
+    fill-mode: forwards;
+    delay: 3s;
+  }
+}
+
+@-webkit-keyframes portal-transition {
+  0% { @include portalBackground(0, 0); }
+  10% { @include portalBackground(1, 0); }
+  20% { @include portalBackground(2, 0); }
+  30% { @include portalBackground(3, 0); }
+  40% { @include portalBackground(4, 0); }
+  50% { @include portalBackground(0, 1); }
+  60% { @include portalBackground(1, 1); }
+  70% { @include portalBackground(2, 1); }
+  80% { @include portalBackground(3, 1); }
+  90% { @include portalBackground(4, 1); }
+  100% { @include portalBackground(4, 1); }
+}
