@@ -101,9 +101,11 @@
       <h2 class="list-heading">You may also be interested in:</h2>
       <ul>
       {{#similarSessions this}}
-        <li class="article-with-image group">
-        {{> sessionPreview }}
-        </li>
+        {{#unless isOriginalSession }}
+          <li class="article-with-image group">
+          {{> sessionPreview }}
+          </li>
+        {{/unless}}
       {{/similarSessions}}
     {{/whenFavorite}}
     </aside>
