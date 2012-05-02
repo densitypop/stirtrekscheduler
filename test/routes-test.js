@@ -9,6 +9,12 @@ module.exports = {
     },
     "#router": {
       "#routeTo": {
+        "calls before prior to calling routes": function(){
+          var spy = sinon.spy(Routes, "before")
+          Routes["/blah"] = function(){}
+          Routes.router.routeTo("/blah")
+          spy.called.should.be.true
+        },
         "calls the requested route": function(){
           Routes["/blah"] = function(){}
           var spy = sinon.spy(Routes, "/blah")
